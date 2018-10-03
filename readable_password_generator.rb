@@ -29,23 +29,21 @@ class Password
   private
 
   #sets of character used in generating
-  module CharSets
-    VOWELS = %w(a e i o u y)
-    CONSONANTS = %w(b c d f g h j k l m n p r s t v w x z)
-    #to diversify the end result
-    DOUBLE_CONSONANTS = %w(ch cr fr nd ng nk nt ph pr rd sh sl sp st th tr)
-  end
+  VOWELS = %w(a e i o u y)
+  CONSONANTS = %w(b c d f g h j k l m n p r s t v w x z)
+  #to diversify the end result
+  DOUBLE_CONSONANTS = %w(ch cr fr nd ng nk nt ph pr rd sh sl sp st th tr)
 
   #take a sample char from a set of letters
   def take_char(set_type)
     if set_type == @vowel_pos
-      return CharSets::VOWELS.sample
+      return VOWELS.sample
     else
       #prioritize randomness to choosing CONSONANTS over DOUBLE_CONSONANTS (3:1)
       if [1,2,3,4].sample == 4
-        return CharSets::CONSONANTS.sample
+        return CONSONANTS.sample
       else
-        return CharSets::DOUBLE_CONSONANTS.sample
+        return DOUBLE_CONSONANTS.sample
       end
     end
   end
