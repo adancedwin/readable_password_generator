@@ -1,5 +1,5 @@
 # Readable password generator
-Meant to generate readable for human passwords
+Meant to generate readable for humans passwords
 
 Can be istalled as a gem:
 ```
