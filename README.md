@@ -8,7 +8,8 @@ gem install readable_password_generator
 
 # How to use it
 
-### Generating a password without passing any value (by default it's in range of 10-18 chars)
+### Generating a password without passing any value 
+By default length is in range of 10-18 chars
 
 ```ruby
 require_relative 'readable_password_generator'
