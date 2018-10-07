@@ -30,8 +30,8 @@ p result.length # => 12
 ```ruby
 require_relative 'readable_password_generator'
 my_pw = Password.new()
-my_pw.pw_length(12)
-p my_pw.gener_passw.length # => 12
+my_pw.set_length(12)
+p len = my_pw.pw_length # => 12
 ```
 
 ### If length value is not a correct Integer value
