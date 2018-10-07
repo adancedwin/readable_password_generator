@@ -8,7 +8,7 @@ gem install readable_password_generator
 
 # How to use it
 
-### Generating a password without passing any length value 
+### 1. Generating a password without passing any length value 
 By default length is in range of 10-18 chars.
 Password intentionally **does not enclude uppercase letters** on perpose to be truly readable.
 
@@ -17,7 +17,7 @@ require_relative 'readable_password_generator'
 my_pw = Password.new()
 p result = my_pw.gener_passw # => "crankestin"
 ```
-### Generating a password by passing a length value
+### 2. Generating a password by passing a length value
 
 ```ruby
 require_relative 'readable_password_generator'
@@ -26,7 +26,7 @@ p result = my_pw.gener_passw # => "spychifrotru"
 p result.length # => 12
 ```
 
-### Updating the length value of a generated password
+### 3. Updating the length value of a generated password
 ```ruby
 require_relative 'readable_password_generator'
 my_pw = Password.new()
@@ -34,7 +34,7 @@ my_pw.set_length(12)
 p len = my_pw.pw_length # => 12
 ```
 
-### If length value is not a correct Integer value
+### 4. If length value is not a correct Integer value
 In this case it checks what data type was passed and Integer's length (if passed):
 * NilClass - then generates a password with default length
 * Anything but not Integer, Array NilClass - raises a certain ArgumentError
