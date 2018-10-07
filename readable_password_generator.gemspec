@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'readable_password_generator'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2018-10-04'
   s.summary     = "Generates readable passwords!"
   s.authors     = ["Vitaly Platonov"]
