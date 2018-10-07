@@ -1,5 +1,5 @@
 # Readable password generator
-Meant to generate readable for humans passwords
+Meant to generate readable for humans passwords.
 
 Can be istalled as a gem:
 ```
@@ -35,7 +35,7 @@ p len = my_pw.pw_length # => 12
 ```
 
 ### 4. If length value is not a correct Integer value
-In this case it checks what data type was passed and Integer's length (if passed):
+In this case it checks what data type was passed or Integer's length (if passed):
 * NilClass - then generates a password with default length
 * Anything but not Integer, Array NilClass - raises a certain ArgumentError
 * Integer of >1 or 100< - raises a certain ArgumentError
