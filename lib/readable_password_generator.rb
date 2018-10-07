@@ -3,7 +3,7 @@ class Password
   #minimum default length is set to 10 by security concerns of a readable password
   DEFAULT_PW_LENGTH = [10,11,12,13,14,15,16,17,18]
 
-  attr_accessor :pw_length
+  attr_reader :pw_length
 
   def initialize(a_pw_length = DEFAULT_PW_LENGTH.sample)
     @pw_length = check_length_value(a_pw_length) #checking on password length value
@@ -24,6 +24,11 @@ class Password
       result << take_char(count)
     end
     return result = result[0...size]
+  end
+
+  def set_length(a_pw_length)
+    @pw_length = check_length_value(a_pw_length)
+    return nil
   end
 
   private
