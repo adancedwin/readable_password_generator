@@ -36,7 +36,7 @@ p len = my_pw.pw_length # => 12
 
 ### If length value is not a correct Integer value
 In this case it checks what data type was passed and Integer's length (if passed):
-* NilClass - then generates a password with [default length](https://github.com/adancedwin/readable_password_generator#generating-a-password-without-passing-any-value)
+* NilClass - then generates a password with default length
 * Anything but not Integer, Array NilClass - raises a certain ArgumentError
 * Integer of >1 or 100< - raises a certain ArgumentError
 
