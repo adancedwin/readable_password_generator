@@ -22,15 +22,17 @@ class Password
 
   def validate_length(length)
     if length.is_a?(NilClass)
-      length = DEFAULT_LENGTH
+      return DEFAULT_LENGTH
     elsif length.is_a?(Array)
       length = length.sample
-    elsif length.is_a?(Integer)
+    elsif length.is_a?(Range)
+      length = rand(length)
+    if length.is_a?(Integer)
       if (length < 1) || (length > 100)
         raise Exception.new("Length cannot be #{length}, length must be in range of 1-100!")
       end
     else
-      raise Exception.new("Length must be either an Integer or a Range value!\n#{length.class} data type is given.")
+      raise Exception.new("Length must be either an Integer or an Array or a Range value!\n#{length.class} data type is given.")
     end
     length
   end
