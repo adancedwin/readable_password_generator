@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'readable_password_generator'
-  s.version     = '0.0.4'
+  s.version     = '0.0.5'
   s.date        = '2018-10-10'
   s.summary     = "Generates readable passwords!"
   s.homepage = 'https://github.com/adancedwin/readable_password_generator'

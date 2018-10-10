@@ -7,7 +7,7 @@ class Password
 
   def generate(length = DEFAULT_LENGTH)
     length = validate_length(length)
-    vowel_position = rand(0...1)
+    vowel_position = [0,1].sample
     size, password = length, ""
     char_set = 0
     size.times do |char|
@@ -27,6 +27,7 @@ class Password
       length = length.sample
     elsif length.is_a?(Range)
       length = rand(length)
+    end
     if length.is_a?(Integer)
       if (length < 1) || (length > 100)
         raise Exception.new("Length cannot be #{length}, length must be in range of 1-100!")
@@ -41,11 +42,7 @@ class Password
     if char_set == vowel_position
       VOWELS.sample
     else
-      if rand(1...4) == 4
-        CONSONANTS.sample
-      else
-        DOUBLE_CONSONANTS.sample
-      end
+      rand(1...4) == 4 ? CONSONANTS.sample : DOUBLE_CONSONANTS.sample
     end
   end
 end
