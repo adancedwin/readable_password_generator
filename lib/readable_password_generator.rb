@@ -1,72 +1,59 @@
 class Password
 
-  #minimum default length is set to 10 by security concerns of a readable password
-  DEFAULT_PW_LENGTH = [10,11,12,13,14,15,16,17,18]
+  VOWELS = %w(a e i o u y)
+  CONSONANTS = %w(b c d f g h j k l m n p r s t v w x z)
+  DOUBLE_CONSONANTS = %w(ch cr fr nd ng nk nt ph pr rd sh sl sp st th tr)
+  DEFAULT_LENGTH = 8
 
-  attr_reader :pw_length
+  attr_reader :length
 
-  def initialize(a_pw_length = DEFAULT_PW_LENGTH.sample)
-    @pw_length = check_length_value(a_pw_length) #checking on password length value
-    @vowel_pos = 0 # by default start password with a vowel
+  def initialize(arg_length = DEFAULT_LENGTH)
+    @length = validate_length(arg_length)
+    @vowel_position = 0
   end
 
-  #generate password of a required length
-  def gener_passw
-    #set position for a vowel: either to start a password with it first or not:
-    # 0 - start password with a vowel
-    # 1 - start password with a consonat(s)
-    @vowel_pos = [1, 2].sample
-    size, result = @pw_length, ""
+  def generate
+    @vowel_position = [1, 2].sample
+    size, result = @length, ""
     count = 0
     size.times do |char|
       count = 0 if count==2
       count+=1
       result << take_char(count)
     end
-    return result = result[0...size]
-  end
-
-  def set_length(a_pw_length)
-    @pw_length = check_length_value(a_pw_length)
-    return nil
+    result = result[0...size]
   end
 
   private
 
-  #sets of character used in generating
-  VOWELS = %w(a e i o u y)
-  CONSONANTS = %w(b c d f g h j k l m n p r s t v w x z)
-  #to diversify the end result
-  DOUBLE_CONSONANTS = %w(ch cr fr nd ng nk nt ph pr rd sh sl sp st th tr)
-
   #take a sample char from a set of letters
   def take_char(set_type)
-    if set_type == @vowel_pos
-      return VOWELS.sample
+    if set_type == @vowel_position
+      VOWELS.sample
     else
       #prioritize randomness to choosing CONSONANTS over DOUBLE_CONSONANTS (3:1)
       if [1,2,3,4].sample == 4
-        return CONSONANTS.sample
+        CONSONANTS.sample
       else
-        return DOUBLE_CONSONANTS.sample
+        DOUBLE_CONSONANTS.sample
       end
     end
   end
 
   #checking length value - does it meet specified criteria:
   # - must consist of numeric value or numeric range
-  def check_length_value(a_pw_length)
-    if a_pw_length.is_a?(NilClass)
-      a_pw_length = DEFAULT_PW_LENGTH.sample
-    elsif a_pw_length.is_a?(Array)
-      a_pw_length = a_pw_length.sample
-    elsif a_pw_length.is_a?(Integer)
-      if (a_pw_length < 1) || (a_pw_length > 100)
-        raise ArgumentError, "Length cannot be #{a_pw_length}, length must be in range of 1-100!"
+  def validate_length(arg_length)
+    if arg_length.is_a?(NilClass)
+      arg_length = DEFAULT_LENGTH
+    elsif arg_length.is_a?(Array)
+      arg_length = arg_length.sample
+    elsif arg_length.is_a?(Integer)
+      if (arg_length < 1) || (arg_length > 100)
+        raise ArgumentError, "Length cannot be #{arg_length}, length must be in range of 1-100!"
       end
     else
-      raise ArgumentError, "Length must be either an Integer or a Range value!\n#{a_pw_length.class} data type is given. "
+      raise ArgumentError, "Length must be either an Integer or a Range value!\n#{arg_length.class} data type is given. "
     end
-    return a_pw_length
+    arg_length
   end
 end
