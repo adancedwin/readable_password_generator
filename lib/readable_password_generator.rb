@@ -7,13 +7,12 @@ class Password
 
   def generate(length = DEFAULT_LENGTH)
     length = validate_length(length)
-    vowel_position = [0,1].sample
+    vowel_position = [1,2].sample
     size, password = length, ""
-    char_set = 0
+    char_set = 1
     size.times do |char|
-      password << pick_letter(char_set, vowel_position)
+      password << pick_letter(char_set.odd?, vowel_position)
       char_set+=1
-      char_set = 0 if char_set==2
     end
     password = password[0...size]
   end
@@ -39,10 +38,10 @@ class Password
   end
 
   def pick_letter(char_set, vowel_position)
-    if char_set == vowel_position
+    if char_set == vowel_position.odd?
       VOWELS.sample
     else
-      rand(1..4) == 4 ? DOUBLE_CONSONANTS.sample : CONSONANTS.sample
+      rand(1..4) == 4 ? CONSONANTS.sample : DOUBLE_CONSONANTS.sample
     end
   end
 end
