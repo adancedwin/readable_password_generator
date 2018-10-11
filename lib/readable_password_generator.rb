@@ -41,7 +41,7 @@ class Password
     if char_set == vowel_position.odd?
       VOWELS.sample
     else
-      rand(1...4) == 4 ? CONSONANTS.sample : DOUBLE_CONSONANTS.sample
+      rand(1..4) == 4 ? DOUBLE_CONSONANTS.sample : CONSONANTS.sample
     end
   end
 end
