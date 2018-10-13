@@ -38,3 +38,9 @@ In this case it checks what data type was passed or Integer's length (if passed)
 * NilClass - then generates a password with default length
 * Anything but not Integer, Array or NilClass - raises an Exception with a certain message
 * Integer of >1 or 100< - raises an Exception with a certain message
+
+# Testing for the project
+Currently the project has a set of test cases. The last can be run from the project's root directory with the following command:
+```
+rspec
+```
