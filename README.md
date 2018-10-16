@@ -14,7 +14,7 @@ Password intentionally **does not include uppercase letters** on purpose to be t
 
 ```ruby
 require_relative 'readable_password_generator'
-pw = Password.new
+my_pw = Password.new
 p result = my_pw.generate # => "crankest"
 ```
 
